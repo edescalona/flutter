@@ -1,17 +1,22 @@
 import 'package:flutter/material.dart';
 
-class HomeScreen extends StatelessWidget {
-  const HomeScreen({super.key});
+class CounterScreen extends StatefulWidget {
+  const CounterScreen({super.key});
+
+  @override
+  State<CounterScreen> createState() => _CounterScreenState();
+}
+
+class _CounterScreenState extends State<CounterScreen> {
+  int counter = 5;
 
   @override
   Widget build(BuildContext context) {
-    
     const fontSize30 = TextStyle(fontSize: 30);
-    int counter = 5;
 
     return Scaffold(
       appBar: AppBar(
-        title: const Text("Home Screen"),
+        title: const Text("Counter Screen"),
         elevation: 0,
       ),
       backgroundColor: Colors.indigo,
@@ -28,7 +33,8 @@ class HomeScreen extends StatelessWidget {
       floatingActionButton: FloatingActionButton(
         child: const Icon(Icons.add),
         onPressed: () {
-            counter++;
+          counter++;
+          setState(() {});
         },
       ),
     );
