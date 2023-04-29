@@ -1,31 +1,21 @@
+/* Importaciones propias de Flutter */
 import 'package:flutter/material.dart';
 
+/* Importaciones de terceros */
+
+/* Importaciones propias */
+import 'package:my_exercises/screens/home_page.dart';
 
 void main() => runApp(const MyAppExercise());
 
-
-class MyAppExercise extends StatelessWidget{
+class MyAppExercise extends StatelessWidget {
   const MyAppExercise({super.key});
 
   @override
   Widget build(BuildContext context) {
-    return const MaterialApp(
-      title: "Mis Ejercicios",
-      home: HomeAppExercise()
-    );
+    return MaterialApp(
+        title: "Mis Ejercicios",
+        theme: ThemeData(primarySwatch: Colors.blue),
+        home: const HomeAppExercise());
   }
-}
-
-
-class HomeAppExercise extends StatelessWidget{
-  const HomeAppExercise({super.key});
-
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(),
-      body: const Text("Registra aqui tus ejercicios",style: TextStyle(color: Colors.blue),)
-    );
-  }
-
 }
