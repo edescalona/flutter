@@ -25,7 +25,7 @@ class ExerciseList extends StatelessWidget {
               child: Text(name,style: TextStyle(color: Colors.red[600]),),
             );*/
             return ListTile(
-              title: Text(name,style: const TextStyle(fontFamily: "GloriaHallelujah-Regular"),),
+              title: Text(name,style: const TextStyle(fontFamily: "Orbitron"),),
               leading: const Icon(Icons.person_2_rounded),
               onTap: () {
                 print(name);

@@ -16,7 +16,7 @@ class MyAppExercise extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
         title: "Mis Ejercicios",
-        theme: ThemeData(primarySwatch: Colors.blue),
+        theme: ThemeData(primarySwatch: Colors.blue,fontFamily: "GloriaHallelujah-Regular"),
         //home: const HomeAppExercise());
         home: ExerciseList());
   }
