@@ -19,6 +19,13 @@ class _HomePageState extends State<HomePage> {
 
   String? lastnameValue;
 
+  FocusNode? nameFocus;
+  FocusNode? lastnameFocus;
+  FocusNode? phoneFocus;
+  FocusNode? emailFocus;
+  FocusNode? ageFocus;
+  FocusNode? websiteFocus;
+
   final formKey = GlobalKey<FormState>();
 
   @override
@@ -52,6 +59,11 @@ class _HomePageState extends State<HomePage> {
                       }
                       return null;
                     },
+                    focusNode: nameFocus,
+                    onEditingComplete: () {
+                      requestFocus(context, lastnameFocus!);
+                    },
+                    textInputAction: TextInputAction.next,
                   ),
                   TextFormField(
                     controller: _lastNameTextController,
@@ -65,22 +77,49 @@ class _HomePageState extends State<HomePage> {
                       }
                       return null;
                     },
+                    focusNode: lastnameFocus,
+                    onEditingComplete: () {
+                      requestFocus(context, phoneFocus!);
+                    },
+                    textInputAction: TextInputAction.next,
                   ),
                   TextFormField(
-                    decoration: const InputDecoration(labelText: "Número de teléfono"),
+                    decoration:
+                        const InputDecoration(labelText: "Número de teléfono"),
                     keyboardType: TextInputType.phone,
+                    focusNode: phoneFocus,
+                    onEditingComplete: () {
+                      requestFocus(context, emailFocus!);
+                    },
+                    textInputAction: TextInputAction.next,
                   ),
                   TextFormField(
-                    decoration: const InputDecoration(labelText: "Correo electrónico"),
+                    decoration:
+                        const InputDecoration(labelText: "Correo electrónico"),
                     keyboardType: TextInputType.emailAddress,
+                    focusNode: emailFocus,
+                    onEditingComplete: () {
+                      requestFocus(context, ageFocus!);
+                    },
+                    textInputAction: TextInputAction.next,
                   ),
                   TextFormField(
                     decoration: const InputDecoration(labelText: "Edad"),
                     keyboardType: TextInputType.number,
+                    focusNode: ageFocus,
+                    onEditingComplete: () {
+                      requestFocus(context, websiteFocus!);
+                    },
+                    textInputAction: TextInputAction.next,
                   ),
                   TextFormField(
-                    decoration: const InputDecoration(labelText: "Url"),
+                    decoration: const InputDecoration(labelText: "Stio web"),
                     keyboardType: TextInputType.url,
+                    focusNode: websiteFocus,
+                    onEditingComplete: () {
+                      requestFocus(context, nameFocus!);
+                    },
+                    textInputAction: TextInputAction.next,
                   ),
                   TextButton(
                       onPressed: () {},
@@ -109,12 +148,26 @@ class _HomePageState extends State<HomePage> {
     super.initState();
     _nameTextController = TextEditingController();
     _lastNameTextController = TextEditingController();
+
+    nameFocus = FocusNode();
+    lastnameFocus = FocusNode();
+    phoneFocus = FocusNode();
+    emailFocus = FocusNode();
+    ageFocus = FocusNode();
+    websiteFocus = FocusNode();
   }
 
   @override
   void dispose() {
     _nameTextController.dispose();
     _lastNameTextController.dispose();
+
+    nameFocus?.dispose();
+    lastnameFocus?.dispose();
+    phoneFocus?.dispose();
+    emailFocus?.dispose();
+    ageFocus?.dispose();
+    websiteFocus?.dispose();
     // TODO: implement dispose
     super.dispose();
   }
@@ -133,5 +186,9 @@ class _HomePageState extends State<HomePage> {
       Navigator.of(context).pushNamed("/second",
           arguments: SecondPageArguments(nameValue!, lastnameValue!));
     }
+  }
+
+  void requestFocus(BuildContext context, FocusNode focusNode) {
+    FocusScope.of(context).requestFocus(focusNode);
   }
 }
