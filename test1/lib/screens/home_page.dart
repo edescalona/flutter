@@ -1,5 +1,3 @@
-import 'dart:convert';
-
 import 'package:flutter/material.dart';
 import 'package:test1/screens/second_page.dart';
 
@@ -137,6 +135,46 @@ class _HomePageState extends State<HomePage> {
                     },
                     child: const Text('Second Page'),
                   ),
+                  TextButton(
+                    style: ButtonStyle(
+                      foregroundColor:
+                          MaterialStateProperty.all<Color>(Colors.blueAccent),
+                    ),
+                    onPressed: () {
+                      _showDrawerPage(context);
+                    },
+                    child: const Text('Drawer Page'),
+                  ),
+                  TextButton(
+                    style: ButtonStyle(
+                      foregroundColor:
+                          MaterialStateProperty.all<Color>(Colors.blueAccent),
+                    ),
+                    onPressed: () {
+                      _showSimpleDialogPage(context);
+                    },
+                    child: const Text('Simple Dialog Page'),
+                  ),
+                  TextButton(
+                    style: ButtonStyle(
+                      foregroundColor:
+                          MaterialStateProperty.all<Color>(Colors.blueAccent),
+                    ),
+                    onPressed: () {
+                      _showAnimationPage(context);
+                    },
+                    child: const Text('Animation Page'),
+                  ),
+                  TextButton(
+                    style: ButtonStyle(
+                      foregroundColor:
+                          MaterialStateProperty.all<Color>(Colors.blueAccent),
+                    ),
+                    onPressed: () {
+                      _showImagePage(context);
+                    },
+                    child: const Text('Image Picker Page'),
+                  ),
                 ],
               )),
         ));
@@ -144,7 +182,6 @@ class _HomePageState extends State<HomePage> {
 
   @override
   void initState() {
-    // TODO: implement initState
     super.initState();
     _nameTextController = TextEditingController();
     _lastNameTextController = TextEditingController();
@@ -168,7 +205,6 @@ class _HomePageState extends State<HomePage> {
     emailFocus?.dispose();
     ageFocus?.dispose();
     websiteFocus?.dispose();
-    // TODO: implement dispose
     super.dispose();
   }
 
@@ -190,5 +226,21 @@ class _HomePageState extends State<HomePage> {
 
   void requestFocus(BuildContext context, FocusNode focusNode) {
     FocusScope.of(context).requestFocus(focusNode);
+  }
+
+  void _showDrawerPage(BuildContext context) {
+    Navigator.of(context).pushNamed("/drawer_page");
+  }
+
+  void _showSimpleDialogPage(BuildContext context) {
+    Navigator.of(context).pushNamed("/simple_dialog");
+  }
+  
+  void _showAnimationPage(BuildContext context) {
+    Navigator.of(context).pushNamed("/animations");
+  }
+  
+  void _showImagePage(BuildContext context) {
+    Navigator.of(context).pushNamed("/image_picker");
   }
 }
